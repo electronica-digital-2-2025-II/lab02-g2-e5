@@ -5,6 +5,7 @@
 # Integrantes
 
 * [Julián Andrés Mancipe Muñoz](https://github.com/JuliTO65)
+* [David Santiago Díaz Rivera](https://github.com/Davidx025)
 
 # Informe
 
