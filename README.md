@@ -29,7 +29,7 @@ Indice:
 
 A continuación se puede observar el vídeo mostrando y explicando el correcto funcionamiento de la FPGA según lo requerido en la guía de laboratorio.
 
-
+[Vídeo explicando el funcionamiento](https://youtu.be/yUS4pviFKPc)
 
 ## Conclusiones
 
