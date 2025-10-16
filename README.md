@@ -95,11 +95,21 @@ Transiciones:
 | op: 100 | Desplazamiento |
 
 
-### Diagrama
+### Diagramas
 
 A continuación se puede observar el diagrama de flujo del modulo principal denominado "ALU":
 
 <img src="/Imagenes/diagrama.png" alt="diagrama" width="80%">
+
+El diagrama RTL obtenido del programa **Vivado** se puede ver en el siguiente link:
+
+[Ver documento PDF](./docs/Esquematico.pdf)
+
+**Comentarios sobre el diagrama RTL:**  
+ - El diseño gira principalmente en torno al módulo de multiplicación, ya que es la única operación implementada con lógica secuencial.  
+ - La lógica de control parece funcionar con lógica negada, como se ha visto en otras FPGAs.  
+ - El RTL muestra claramente la estructura modular del sistema, separando control y operaciones.
+
 
 ## Simulaciones 
 
