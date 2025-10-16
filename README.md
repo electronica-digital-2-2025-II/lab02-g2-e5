@@ -24,17 +24,17 @@ Indice:
 ### Descripción
 En este laboratorio se diseñó e implementó una Unidad Aritmético-Lógica (ALU) secuencial de 6 bits, capaz de ejecutar cinco operaciones principales: suma, resta, multiplicación, desplazamiento a la izquierda y operación lógica NOT.
 
-El diseño recibe dos operandos de 4 bits (A y B) y un código de operación de 3 bits (op) que determina la función a realizar. Además de la salida principal de la operación (Y), la ALU genera dos señales de estado:
+El diseño recibe dos operandos de 4 bits (``A`` y ``B``) y un código de operación de 3 bits (``op``) que determina la función a realizar. Además de la salida principal de la operación (``Y``), la ALU genera dos señales de estado:
 
 Zero, que se activa cuando el resultado de la operación es igual a cero.
 
 Overflow, que indica la ocurrencia de un desbordamiento o pérdida de bits significativos en operaciones aritméticas o de desplazamiento.
 
-La arquitectura se basa en una máquina de estados secuencial que controla el flujo de las operaciones contenidad en modulos independientes que son instanciados en el principal. En el caso de las operaciones combinacionales (suma, resta, NOT y desplazamiento), el resultado se obtiene de manera inmediata. Para la multiplicación, en cambio, se implementa un módulo secuencial que requiere varios ciclos de reloj para completar el cálculo, generando una señal de control (done) al finalizar.
+Por otro lado, la arquitectura se basa en una máquina de estados secuencial que controla el flujo de las operaciones contenidas en modulos independientes que son instanciados en el principal. En el caso de las operaciones combinacionales (suma, resta, NOT y desplazamiento), el resultado se obtiene de manera inmediata. Para la multiplicación, en cambio, se implementa un módulo secuencial que requiere varios ciclos de reloj para completar el cálculo, generando una señal de control (``done``) al finalizar.
 
 ### Estados de la maquina de estados:
 
-#### 1. Estado 1: INACTIVO
+#### Estado 1: INACTIVO
 Es el estado de reposo. La ALU espera a que se active la señal `start`.
 
 Aciones: 
@@ -50,7 +50,7 @@ Transiciones:
   La operación se ejecuta de forma secuencial, pasando al estado `PROCESANDO`.
 
 
-#### 2. Estado 2: PROCESANDO
+#### Estado 2: PROCESANDO
 
 Este estado controla la multiplicación secuencial, la única operación que toma varios ciclos.
 
@@ -70,7 +70,7 @@ Transiciones:
 
 
 
-#### 3. Estado 3: FINALIZADO 
+#### Estado 3: FINALIZADO 
 
 Indica que la operación (sea combinacional o secuencial) ya se completó.
 
