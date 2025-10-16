@@ -26,7 +26,12 @@ En este laboratorio si diseño una ALU (Arithmetic Logic Unit) secuencial de 6 b
 
 ## Simulaciones 
 
+A continuación, se muestran los diferentes casos que se simularon para corroborar el correcto funcionamiento del modulo de la ALU. En la carpeta "src" se encuentra el Testbench empleado para la simulación en gtkwave.
+
 <img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="80%">
+
+En la imagen anterior se puede apreciar los números binarios de 4 bits, los cuales fueron las entradas de la ALU, ´´´A´´´ y ´´´B´´´. Asimismo, la salida de general de la ALU de 6 bits ´´´Y´´´.
+
 <img src="/Imagenes/Simulacion-D.JPG "alt="Simu-2" width="80%">
 
 ## Implementación
