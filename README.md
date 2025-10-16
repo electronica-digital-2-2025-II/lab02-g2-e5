@@ -25,14 +25,16 @@ Indice:
 En este laboratorio se diseño una ALU (Arithmetic Logic Unit) secuencial de 6 bits. Esta ALU se compone de 5 operaciones principales (suma, resta, multiplicación, desplazamiento, compuerta logica not), de las cuales independientemente de la operación seleccionada se obtiene además de la salida de la operación como tal (Y), otras 2 salidas en las cuales la primera se activa en caso de que el resultado de la operación sea cero y la otra en caso de que se presente un Overflow. 
 
 ### Diagrama
+
 <img src="/Imagenes/diagrama.png" alt="diagrama" width="80%">
+
 ## Simulaciones 
 
 A continuación, se muestran los diferentes casos que se simularon para corroborar el correcto funcionamiento del modulo de la ALU. En la carpeta "src" se encuentra el Testbench empleado para la simulación en gtkwave.
 
 En la primera imagen se pueden observar las tres señales más importantes: ``A``, ``B`` y ``Y`` expresadas a través de su notación en números binarios mientras que la segunda refleja la misma información que la primera, excepto que esas mismas tres señales ahora se ven mediante su equivalencia en números decimales; esto para tener una mejor comprensión de los valores de entrada.
 
-<img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="80%">
+<img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="90%">
 
 En la imagen anterior se puede apreciar los números binarios de 4 bits, los cuales fueron las entradas de la ALU, ``A`` y ``B``. Asimismo, la salida en general de la ALU de 6 bits ``Y``, la señal de ``Overflow``, ``Zero``, ``start`` y ``done``, por último el selector ``op`` el cual se expresa en números decimales. Para tener una mayor claridad estas son las operaciones que se relacionan con cada estado de ``op``:
 
@@ -44,9 +46,9 @@ En la imagen anterior se puede apreciar los números binarios de 4 bits, los cua
 
 Por otro lado, se va a profundizar en la explicación de operación NOT y el corrimiento a la izquierda en esta simulación debido a que es mucho más facil explicarlo con números binarios. Cuando op = 3 se puede ver que el número A está en 1010 y el número B en 0000, esto porque la operación lógica solamente se le aplicará al número A por practicidad, al presionarse ``start`` se efectúa esta operación dando como resultado una salida Y = 000101, lo cual demuestra que la inversión lógica se realizó de manera correcta; la señal de done se "enciende" cuando la operación finaliza. Luego, el siguiente estado es op = 4 a su vez A es 0011 y B es 0010, después de que se presiona start la salida Y reporta un valor de 001100, esto muestra que el corrimiento del número A en función de B se llevo acabo correctamente, ya que A se desplazó a la izquierda dos posiciones.
 
-<img src="/Imagenes/Simulacion-D.JPG "alt="Simu-2" width="80%">
+<img src="/Imagenes/Simulacion-D.JPG"alt="Simu-2" width="90%">
 
-
+Por medio de la anterior imagen se va a explicar el caso de la suma, la multiplicación, la resta, cuando hay Overflow y cuando hay Zero. 
 
 ## Implementación
 
