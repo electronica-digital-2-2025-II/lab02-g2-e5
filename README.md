@@ -20,7 +20,7 @@ Indice:
 ## Diseño implementado
 
 ### Descripción
-En este laboratorio si diseño una ALU (Arithmetic Logic Unit) secuencial de 6 bits. Esta ALU se compone de 5 operaciones principales (suma, resta, multiplicación, desplazamiento, compuerta logica not), de las cuales independientemente de la operacion seleccionada se obtiene ademas de la salida de la operacion como tal (Y), otras 2 salidas en las cuales la primera se activa en caso de que el resultado de la operación sea cero y la otra en caso de que se presente un overflow. 
+En este laboratorio se diseño una ALU (Arithmetic Logic Unit) secuencial de 6 bits. Esta ALU se compone de 5 operaciones principales (suma, resta, multiplicación, desplazamiento, compuerta logica not), de las cuales independientemente de la operación seleccionada se obtiene además de la salida de la operación como tal (Y), otras 2 salidas en las cuales la primera se activa en caso de que el resultado de la operación sea cero y la otra en caso de que se presente un Overflow. 
 
 ### Diagrama
 
@@ -28,11 +28,23 @@ En este laboratorio si diseño una ALU (Arithmetic Logic Unit) secuencial de 6 b
 
 A continuación, se muestran los diferentes casos que se simularon para corroborar el correcto funcionamiento del modulo de la ALU. En la carpeta "src" se encuentra el Testbench empleado para la simulación en gtkwave.
 
+En la primera imagen se pueden observar las tres señales más importantes: ``A``, ``B`` y ``Y`` expresadas a través de su notación en números binarios mientras que la segunda refleja la misma información que la primera, excepto que esas mismas tres señales ahora se ven mediante su equivalencia en números decimales; esto para tener una mejor comprensión de los valores de entrada.
+
 <img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="80%">
 
-En la imagen anterior se puede apreciar los números binarios de 4 bits, los cuales fueron las entradas de la ALU, ´´´A´´´ y ´´´B´´´. Asimismo, la salida de general de la ALU de 6 bits ´´´Y´´´.
+En la imagen anterior se puede apreciar los números binarios de 4 bits, los cuales fueron las entradas de la ALU, ``A`` y ``B``. Asimismo, la salida en general de la ALU de 6 bits ``Y``, la señal de ``Overflow``, ``Zero``, ``start`` y ``done``, por último el selector ``op`` el cual se expresa en números decimales. Para tener una mayor claridad estas son las operaciones que se relacionan con cada estado de ``op``:
+
+- op = 0 --> Suma
+- op = 1 --> Multiplicación
+- op = 2 --> Resta
+- op = 3 --> NOT
+- op = 4 --> Corrimiento a la izquierda
+
+Por otro lado, se va a profundizar en la explicación de operación NOT y el corrimiento a la izquierda en esta simulación debido a que es mucho más facil explicarlo con números binarios. Cuando op = 3 se puede ver que el número A está en 1010 y el número B en 0000, esto porque la operación lógica solamente se le aplicará al número A por practicidad, al presionarse ``start`` se efectúa esta operación dando como resultado una salida Y = 000101, lo cual demuestra que la inversión lógica se realizó de manera correcta; la señal de done se "enciende" cuando la operación finaliza. Luego, el siguiente estado es op = 4 a su vez A es 0011 y B es 0010, después de que se presiona start la salida Y reporta un valor de 001100, esto muestra que el corrimiento del número A en función de B se llevo acabo correctamente, ya que A se desplazó a la izquierda dos posiciones.
 
 <img src="/Imagenes/Simulacion-D.JPG "alt="Simu-2" width="80%">
+
+
 
 ## Implementación
 
@@ -41,6 +53,15 @@ A continuación se puede observar el vídeo mostrando y explicando el correcto f
 [Vídeo explicando el funcionamiento](https://youtu.be/yUS4pviFKPc)
 
 ## Conclusiones
+
+* Se implementó una ALU capaz de operar con datos de 4 bits, realizando operaciones básicas como suma, resta, multiplicación, corrimiento y una operación lógica seleccionada (NOT). Esto permitió comprender cómo se estructuran estas unidades dentro de un procesador y cómo se diseñan utilizando un lenguaje de descripción de hardware (HDL).
+
+* Además, se profundizó en el uso de un multiplexor como mecanismo de selección de operaciones, aspecto esencial en la arquitectura de una ALU. Esto permitió observar cómo, dependiendo de señales de control, la unidad puede cambiar su comportamiento dinámicamente, ofreciendo distintas salidas según la operación solicitada.
+
+* Otro punto clave fue comprender la función de la ALU dentro de la microarquitectura del procesador. Se identificó que la ALU constituye el núcleo del procesamiento de datos, siendo la encargada de ejecutar instrucciones aritméticas y lógicas fundamentales para el funcionamiento general del sistema. Su correcta integración con los demás bloques funcionales permite ejecutar programas y operaciones complejas.
+
+* Durante la etapa de implementación física en la placa de desarrollo, se presentó un inconveniente importante: al ejecutar las operaciones, no se reflejaban resultados en los LEDs de salida, ni en las señales de Overflow o Zero, mostrando únicamente la señal ``done``. Tras un análisis prolongado sin éxito, se descubrió finalmente que el problema radicaba en **una mala ubicación del bloque ``case`` encargado de seleccionar la operación** (``op``), el cual estaba dentro de un bloque de lógica combinacional, sin sincronización con el reloj. Esto impedía que el sistema actualizara correctamente su estado, ya que el flujo de control principal dependía de una máquina de estados implementada en un bloque secuencial.
+Este error, aunque frustrante, fue una experiencia valiosa, ya que permitió reforzar la importancia de **estructurar adecuadamente la lógica secuencial y combinacional** en sistemas digitales, especialmente cuando se combinan operaciones síncronas (como la multiplicación mediante ASM) con operaciones combinacionales simples. Finalmente, al reubicar correctamente la lógica de control dentro del bloque sincronizado con el reloj, el diseño funcionó como se esperaba, validando todo el sistema.
 
 ## Referencias
 
