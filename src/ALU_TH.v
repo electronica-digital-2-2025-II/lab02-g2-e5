@@ -93,7 +93,7 @@ module tb_ALU_4bit;
         #10 start = 0;
         #40;
 
-// ===== CASO 6: MULTIPLICACIÓN o =====
+// ===== CASO 6: MULTIPLICACIÓN Overflow =====
         A = 4'd15;
         B = 4'd15;
         op = 3'b001;
@@ -102,7 +102,7 @@ module tb_ALU_4bit;
         wait(done);
         #40;
 
-        // ===== CASO 6: MULTIPLICACIÓN zero =====
+        // ===== CASO 6: MULTIPLICACIÓN Zero =====
         A = 4'd15;
         B = 4'd0;
         op = 3'b001;
