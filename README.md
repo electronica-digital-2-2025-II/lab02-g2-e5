@@ -122,7 +122,14 @@ Por otro lado, se va a profundizar en la explicación de operación NOT y el cor
 <img src="/Imagenes/Simulacion-D.JPG" alt="Simu-2" width="90%">
 
 Por medio de la anterior imagen se va a explicar el caso de la suma, la multiplicación, la resta, cuando hay Overflow y cuando hay Zero.
-La primera operación que se puede ver es la suma porque op = 0
+
+La primera operación que se ejecuta corresponde a la suma porque op = 0. En este caso, A = 5 y B = 4, por lo tanto la salida ``Y`` muestra el valor 9 (5 + 4). La señal ``done`` se activa cuando la operación finaliza correctamente. 
+
+La siguiente operación corresponde a la multiplicación debido a que op = 1. A = 4 y B = 2, cuyo resultado es 8, el cual se refleja en la salida Y. Posteriormente, se puede observar otra multiplicación con A = 15 y B = 15, resultando en Y = 225. Sin embargo, como Y es de 6 bits, este resultado es truncado a 33 en la salida, lo que activa la señal ``Overflow``, indicando que se han perdido bits más significativos en la operación. Finalmente, se realiza una multiplicación más con A = 15 y B = 0, produciendo un resultado de Y = 0, lo que a su vez activa la señal ``Zero``, indicando que el resultado de la operación fue cero.
+
+Por último, cuando op = 2 (Resta) se observa que A = 5 y B = 1; la operación A - B = 4 genera una salida Y = 4. Además, al igual que en el caso de la suma y de la multiplicación la señal ``done`` se activa cuando la operación finaliza correctamente.
+
+Estas observaciones permiten verificar el correcto funcionamiento de la ALU en distintas condiciones, incluyendo casos normales, detección de Overflow y resultados nulos. La señal ``done`` se activa de manera consistente al finalizar cada operación, evidenciando una implementación estable del flujo de control.
 
 ## Implementación
 
