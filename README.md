@@ -4,6 +4,8 @@
 
 # Integrantes
 
+* [Julián Andrés Mancipe Muñoz](https://github.com/JuliTO65)
+
 # Informe
 
 Indice:
@@ -24,6 +26,12 @@ Indice:
 
 ## Implementación
 
+A continuación se puede observar el vídeo mostrando y explicando el correcto funcionamiento de la FPGA según lo requerido en la guía de laboratorio.
+
+
+
 ## Conclusiones
 
 ## Referencias
+
+Guía de laboratorio sobre la ALU: [Unidad Aritmético-Lógica (ALU)](https://github.com/jharamirezma/Lab_electronica_digital_2/blob/main/labs/lab02/README.md)
