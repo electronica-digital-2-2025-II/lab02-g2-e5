@@ -97,6 +97,8 @@ Transiciones:
 
 ### Diagrama
 
+A continuación se puede observar el diagrama de flujo del modulo principal denominado "ALU":
+
 <img src="/Imagenes/diagrama.png" alt="diagrama" width="80%">
 
 ## Simulaciones 
@@ -119,7 +121,8 @@ Por otro lado, se va a profundizar en la explicación de operación NOT y el cor
 
 <img src="/Imagenes/Simulacion-D.JPG" alt="Simu-2" width="90%">
 
-Por medio de la anterior imagen se va a explicar el caso de la suma, la multiplicación, la resta, cuando hay Overflow y cuando hay Zero. 
+Por medio de la anterior imagen se va a explicar el caso de la suma, la multiplicación, la resta, cuando hay Overflow y cuando hay Zero.
+La primera operación que se puede ver es la suma porque op = 0
 
 ## Implementación
 
