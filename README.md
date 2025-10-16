@@ -46,7 +46,7 @@ En la imagen anterior se puede apreciar los números binarios de 4 bits, los cua
 
 Por otro lado, se va a profundizar en la explicación de operación NOT y el corrimiento a la izquierda en esta simulación debido a que es mucho más facil explicarlo con números binarios. Cuando op = 3 se puede ver que el número A está en 1010 y el número B en 0000, esto porque la operación lógica solamente se le aplicará al número A por practicidad, al presionarse ``start`` se efectúa esta operación dando como resultado una salida Y = 000101, lo cual demuestra que la inversión lógica se realizó de manera correcta; la señal de done se "enciende" cuando la operación finaliza. Luego, el siguiente estado es op = 4 a su vez A es 0011 y B es 0010, después de que se presiona start la salida Y reporta un valor de 001100, esto muestra que el corrimiento del número A en función de B se llevo acabo correctamente, ya que A se desplazó a la izquierda dos posiciones.
 
-<img src="/Imagenes/Simulacion-D.JPG"alt="Simu-2" width="90%">
+<img src="/Imagenes/Simulacion-D.JPG" alt="Simu-2" width="90%">
 
 Por medio de la anterior imagen se va a explicar el caso de la suma, la multiplicación, la resta, cuando hay Overflow y cuando hay Zero. 
 
