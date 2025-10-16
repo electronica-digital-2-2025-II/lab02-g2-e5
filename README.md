@@ -25,6 +25,9 @@ Indice:
 
 ## Simulaciones 
 
+<img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="50%">
+<img src="/Imagenes/Simulacion-D.JPG "alt="Simu-2" width="50%">
+
 ## Implementación
 
 A continuación se puede observar el vídeo mostrando y explicando el correcto funcionamiento de la FPGA según lo requerido en la guía de laboratorio.
