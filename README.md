@@ -6,6 +6,7 @@
 
 * [Julián Andrés Mancipe Muñoz](https://github.com/JuliTO65)
 * [David Santiago Díaz Rivera](https://github.com/Davidx025)
+* [Mariá José Morales Villacres](https://github.com/MariaJoseM0)
 
 # Informe
 
@@ -19,11 +20,12 @@ Indice:
 
 ## Diseño implementado
 
+
 ### Descripción
 En este laboratorio se diseño una ALU (Arithmetic Logic Unit) secuencial de 6 bits. Esta ALU se compone de 5 operaciones principales (suma, resta, multiplicación, desplazamiento, compuerta logica not), de las cuales independientemente de la operación seleccionada se obtiene además de la salida de la operación como tal (Y), otras 2 salidas en las cuales la primera se activa en caso de que el resultado de la operación sea cero y la otra en caso de que se presente un Overflow. 
 
 ### Diagrama
-
+<img src="/Imagenes/diagrama.png" alt="diagrama" width="80%">
 ## Simulaciones 
 
 A continuación, se muestran los diferentes casos que se simularon para corroborar el correcto funcionamiento del modulo de la ALU. En la carpeta "src" se encuentra el Testbench empleado para la simulación en gtkwave.
