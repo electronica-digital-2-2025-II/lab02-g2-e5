@@ -20,6 +20,7 @@ Indice:
 ## Diseño implementado
 
 ### Descripción
+En este laboratorio si diseño una ALU (Arithmetic Logic Unit) secuencial de 6 bits. Esta ALU se compone de 5 operaciones principales (suma, resta, multiplicación, desplazamiento, compuerta logica not), de las cuales independientemente de la operacion seleccionada se obtiene ademas de la salida de la operacion como tal (Y), otras 2 salidas en las cuales la primera se activa en caso de que el resultado de la operación sea cero y la otra en caso de que se presente un overflow. 
 
 ### Diagrama
 
