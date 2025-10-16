@@ -26,7 +26,7 @@ En este laboratorio si diseño una ALU (Arithmetic Logic Unit) secuencial de 6 b
 
 ## Simulaciones 
 
-<img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="50%">
+<img src="/Imagenes/Simulacion-B.JPG" alt="Simu-1" width="60%">
 <img src="/Imagenes/Simulacion-D.JPG "alt="Simu-2" width="50%">
 
 ## Implementación
