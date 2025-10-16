@@ -22,7 +22,78 @@ Indice:
 
 
 ### Descripción
-En este laboratorio se diseño una ALU (Arithmetic Logic Unit) secuencial de 6 bits. Esta ALU se compone de 5 operaciones principales (suma, resta, multiplicación, desplazamiento, compuerta logica not), de las cuales independientemente de la operación seleccionada se obtiene además de la salida de la operación como tal (Y), otras 2 salidas en las cuales la primera se activa en caso de que el resultado de la operación sea cero y la otra en caso de que se presente un Overflow. 
+En este laboratorio se diseñó e implementó una Unidad Aritmético-Lógica (ALU) secuencial de 6 bits, capaz de ejecutar cinco operaciones principales: suma, resta, multiplicación, desplazamiento a la izquierda y operación lógica NOT.
+
+El diseño recibe dos operandos de 4 bits (A y B) y un código de operación de 3 bits (op) que determina la función a realizar. Además de la salida principal de la operación (Y), la ALU genera dos señales de estado:
+
+Zero, que se activa cuando el resultado de la operación es igual a cero.
+
+Overflow, que indica la ocurrencia de un desbordamiento o pérdida de bits significativos en operaciones aritméticas o de desplazamiento.
+
+La arquitectura se basa en una máquina de estados secuencial que controla el flujo de las operaciones contenidad en modulos independientes que son instanciados en el principal. En el caso de las operaciones combinacionales (suma, resta, NOT y desplazamiento), el resultado se obtiene de manera inmediata. Para la multiplicación, en cambio, se implementa un módulo secuencial que requiere varios ciclos de reloj para completar el cálculo, generando una señal de control (done) al finalizar.
+
+### Estados de la maquina de estados:
+
+#### 1. Estado 1: INACTIVO
+Es el estado de reposo. La ALU espera a que se active la señal `start`.
+
+Aciones: 
+
+- `done=0`
+- `Y`, `Zero` y `Overflow` se mantienen o se limpian (cuando se realiza una nueva operación).
+- Si `start=1` se evalua el valor de `op` para decidir la operacion.
+
+Transiciones: 
+- Si `op` corresponde a una operación combinacional (`SUMA`, `RESTA`, `NOT`, `CORRIMIENTO`):
+  Se realiza la operación en el mismo ciclo y se pasa directamente a `FINALIZADO`.
+- Si `op=3b'001` (MULTIPLICACIÓN):
+  La operación se ejecuta de forma secuencial, pasando al estado `PROCESANDO`.
+
+
+#### 2. Estado 2: PROCESANDO
+
+Este estado controla la multiplicación secuencial, la única operación que toma varios ciclos.
+
+Acciones:
+
+- Se mantiene activa la señal `start` hacia el módulo `multiplier_4bit_asm`.
+- La ALU espera a que la señal `mult_done` del multiplicador cambie a `1`, indicando que el cálculo terminó.
+
+Transiciones:
+- Cuando `mult_done = 1`, la ALU:
+  - Carga `Y = mult_result[5:0]`
+  - Calcula `Overflow = |mult_result[7:6]`
+  - Calcula `Zero = (mult_result[5:0] == 6'd0)`
+  - Pasa al estado `FINALIZADO`.
+
+
+
+
+
+#### 3. Estado 3: FINALIZADO 
+
+Indica que la operación (sea combinacional o secuencial) ya se completó.
+
+Acciones:
+
+- `done = 1` → Señal de finalización activa.
+- Las salidas `Y`, `Zero` y `Overflow` mantienen el resultado estable.
+- No se realiza ningún cálculo nuevo.
+
+Transiciones:
+
+- Cuando `start` vuelve a `0`, el sistema retorna a `INACTIVO` para permitir una nueva operación.
+
+### Codificación del selector de operaciones
+
+| Codificación | Operación |
+|------------|------------|
+| op: 000 | Suma |
+| op: 001 | Multiplicación |
+| op: 010 | Resta |
+| op: 011 | NOT |
+| op: 100 | Desplazamiento |
+
 
 ### Diagrama
 
